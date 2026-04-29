@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>כספים אבודים מירושה — בדיקה ראשונית חינם</title>
+  <meta name="description" content="איבדת הורה? ייתכן שיש כספים שמחכים לך מביטוחים ופנסיות. בדיקה ראשונית חינם, תשלום רק על הצלחה." />
+
+  <!-- Google Fonts: Heebo (Hebrew) + Frank Ruhl Libre (elegant display) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =============================================
+       CSS CUSTOM PROPERTIES & RESET
+    ============================================= */
+    :root {
+      --navy:      #0d2b55;
+      --blue:      #1a4d8f;
+      --sky:       #2e7dd1;
+      --sky-light: #e8f2fd;
+      --gold:      #c9a84c;
+      --gold-light:#fdf6e3;
+      --white:     #ffffff;
+      --gray-50:   #f8fafc;
+      --gray-100:  #f1f5f9;
+      --gray-200:  #e2e8f0;
+      --gray-400:  #94a3b8;
+      --gray-600:  #475569;
+      --gray-800:  #1e293b;
+      --red-soft:  #fff1f0;
+      --radius:    12px;
+      --shadow-sm: 0 2px 8px rgba(13,43,85,.08);
+      --shadow-md: 0 8px 32px rgba(13,43,85,.13);
+      --shadow-lg: 0 20px 60px rgba(13,43,85,.18);
+      --font-display: 'Frank Ruhl Libre', serif;
+      --font-body:    'Heebo', sans-serif;
+      --transition:   all .25s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--gray-800);
+      background: var(--white);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* =============================================
+       TYPOGRAPHY HELPERS
+    ============================================= */
+    .section-label {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--sky);
+      background: var(--sky-light);
+      padding: .3rem .8rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+
+    h1, h2, h3 { font-family: var(--font-display); line-height: 1.25; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; }
+    h2 { font-size: clamp(1.6rem, 3.5vw, 2.3rem); font-weight: 700; }
+    h3 { font-size: 1.2rem; font-weight: 700; }
+
+    p { font-size: 1.05rem; color: var(--gray-600); }
+
+    /* =============================================
+       LAYOUT HELPERS
+    ============================================= */
+    .container {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    section { padding: 5rem 0; }
+    section:nth-child(even) { background: var(--gray-50); }
+
+    .divider {
+      width: 56px;
+      height: 4px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin: 1rem 0 1.5rem;
+    }
+
+    /* =============================================
+       BUTTONS
+    ============================================= */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      padding: 1rem 2.2rem;
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      box-shadow: 0 4px 16px rgba(201,168,76,.35);
+    }
+    .btn-primary:hover {
+      background: #b8963f;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(201,168,76,.45);
+    }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-lg { padding: 1.2rem 2.8rem; font-size: 1.15rem; }
+
+    /* =============================================
+       TOP BAR
+    ============================================= */
+    .topbar {
+      background: var(--navy);
+      color: rgba(255,255,255,.85);
+      text-align: center;
+      font-size: .85rem;
+      padding: .6rem 1rem;
+      letter-spacing: .02em;
+    }
+    .topbar strong { color: var(--gold); }
+
+    /* =============================================
+       NAVBAR
+    ============================================= */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 1rem 1.25rem;
+    }
+    .nav-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: var(--navy);
+    }
+    .nav-logo span { color: var(--sky); }
+    .nav-cta { display: none; }
+    @media (min-width: 540px) {
+      .nav-cta {
+        display: inline-flex;
+        padding: .55rem 1.4rem;
+        font-size: .9rem;
+      }
+    }
+
+    /* =============================================
+       HERO SECTION
+    ============================================= */
+    #hero {
+      background: linear-gradient(160deg, var(--navy) 0%, #16407a 60%, #1e5aa0 100%);
+      color: var(--white);
+      padding: 5rem 0 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 110% 110%, rgba(201,168,76,.12) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at -10% -10%, rgba(46,125,209,.25) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 999px;
+      padding: .4rem 1rem;
+      font-size: .85rem;
+      color: rgba(255,255,255,.9);
+      margin-bottom: 1.5rem;
+    }
+    .hero-badge .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 0 3px rgba(74,222,128,.25);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 0 3px rgba(74,222,128,.25); }
+      50%      { box-shadow: 0 0 0 6px rgba(74,222,128,.1); }
+    }
+
+    #hero h1 {
+      color: var(--white);
+      max-width: 640px;
+      margin-bottom: 1.2rem;
+    }
+    #hero h1 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,.8);
+      max-width: 520px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      align-items: flex-start;
+    }
+    .hero-note {
+      font-size: .85rem;
+      color: rgba(255,255,255,.6);
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+    .hero-note::before {
+      content: '✓';
+      color: #4ade80;
+      font-weight: 700;
+    }
+
+    /* =============================================
+       TRUST STRIP (3 bullets)
+    ============================================= */
+    #trust {
+      background: var(--white);
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .trust-item {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+    }
+    .trust-icon {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      border-radius: 10px;
+      background: var(--sky-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+    .trust-text strong {
+      display: block;
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.3;
+    }
+    .trust-text span {
+      font-size: .82rem;
+      color: var(--gray-400);
+    }
+
+    @media (max-width: 540px) {
+      .trust-grid { grid-template-columns: 1fr; gap: 1rem; }
+    }
+
+    /* =============================================
+       PROBLEM SECTION
+    ============================================= */
+    #problem { padding: 5rem 0; }
+    #problem h2 { margin-bottom: .5rem; }
+
+    .pain-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .pain-card {
+      background: var(--red-soft);
+      border: 1px solid #ffd5d0;
+      border-radius: var(--radius);
+      padding: 1.25rem 1.1rem;
+      position: relative;
+    }
+    .pain-card::before {
+      content: '"';
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      color: #ffb3aa;
+      position: absolute;
+      top: -.2rem;
+      right: .8rem;
+      line-height: 1;
+    }
+    .pain-card p {
+      font-size: .95rem;
+      color: #8b2a1f;
+      font-weight: 500;
+      padding-top: .5rem;
+    }
+
+    @media (max-width: 540px) {
+      .pain-cards { grid-template-columns: 1fr; }
+    }
+
+    .problem-close {
+      margin-top: 2rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--sky-light);
+      border-right: 4px solid var(--sky);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-size: 1rem;
+      color: var(--navy);
+      font-weight: 500;
+    }
+
+    /* =============================================
+       SOLUTION / 3 STEPS
+    ============================================= */
+    #solution { background: var(--gray-50); }
+    #solution h2 { margin-bottom: .5rem; }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 2.5rem;
+      position: relative;
+    }
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      right: 27px;
+      width: 2px;
+      background: var(--gray-200);
+    }
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding-bottom: 2rem;
+      position: relative;
+    }
+    .step:last-child { padding-bottom: 0; }
+
+    .step-num {
+      width: 56px;
+      min-width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      box-shadow: var(--shadow-md);
+    }
+
+    .step-body { padding-top: .5rem; }
+    .step-body h3 { color: var(--navy); margin-bottom: .3rem; }
+    .step-body p { font-size: .95rem; }
+
+    /* =============================================
+       REALIZATION TRIGGER
+    ============================================= */
+    #trigger {
+      background: linear-gradient(135deg, var(--navy) 0%, #16407a 100%);
+      padding: 4rem 0;
+    }
+    .trigger-inner {
+      text-align: center;
+    }
+    .trigger-inner .quote-mark {
+      font-family: var(--font-display);
+      font-size: 6rem;
+      line-height: .7;
+      color: rgba(255,255,255,.12);
+      margin-bottom: .5rem;
+    }
+    .trigger-inner blockquote {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 700;
+      color: var(--white);
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.4;
+    }
+    .trigger-inner blockquote em {
+      font-style: normal;
+      color: var(--gold);
+    }
+    .trigger-inner p {
+      color: rgba(255,255,255,.65);
+      font-size: .95rem;
+      max-width: 440px;
+      margin: 0 auto 2rem;
+    }
+
+    /* =============================================
+       PRICING SECTION
+    ============================================= */
+    #pricing { padding: 5rem 0; }
+    #pricing h2 { margin-bottom: .5rem; }
+
+    .pricing-card {
+      background: var(--white);
+      border: 2px solid var(--gray-200);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      margin-top: 2rem;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+    .pricing-card::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 6px; height: 100%;
+      background: linear-gradient(180deg, var(--gold), #e8c56a);
+    }
+
+    .pricing-highlight {
+      display: flex;
+      align-items: baseline;
+      gap: .5rem;
+      flex-wrap: wrap;
+      margin: 1.25rem 0;
+    }
+    .pricing-num {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1;
+    }
+    .pricing-detail {
+      font-size: 1rem;
+      color: var(--gray-600);
+    }
+    .pricing-or {
+      font-size: .9rem;
+      color: var(--gray-400);
+      margin: .25rem 0;
+    }
+
+    .pricing-zero {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      font-size: .95rem;
+      color: #166534;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      margin-top: 1.25rem;
+    }
+    .pricing-zero::before { content: '✓'; font-size: 1.1rem; }
+
+    /* =============================================
+       LEAD FORM
+    ============================================= */
+    #form {
+      background: linear-gradient(160deg, var(--navy) 0%, #16407a 100%);
+      padding: 5rem 0;
+    }
+    #form h2 { color: var(--white); margin-bottom: .5rem; }
+    .form-sub {
+      color: rgba(255,255,255,.7);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .lead-form {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 2rem 1.75rem;
+      box-shadow: var(--shadow-lg);
+      max-width: 480px;
+    }
+
+    .field { margin-bottom: 1.25rem; }
+    .field label {
+      display: block;
+      font-weight: 600;
+      font-size: .9rem;
+      color: var(--navy);
+      margin-bottom: .45rem;
+    }
+    .field input {
+      width: 100%;
+      padding: .85rem 1rem;
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--gray-800);
+      background: var(--gray-50);
+      transition: var(--transition);
+      outline: none;
+    }
+    .field input::placeholder { color: var(--gray-400); }
+    .field input:focus {
+      border-color: var(--sky);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(46,125,209,.12);
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 1.1rem;
+      font-size: 1.1rem;
+      border-radius: var(--radius);
+    }
+
+    .form-privacy {
+      text-align: center;
+      font-size: .78rem;
+      color: var(--gray-400);
+      margin-top: .75rem;
+    }
+
+    /* =============================================
+       FAQ SECTION
+    ============================================= */
+    #faq { padding: 5rem 0; background: var(--gray-50); }
+    #faq h2 { margin-bottom: 2rem; }
+
+    .faq-list { display: flex; flex-direction: column; gap: .75rem; }
+
+    details {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    details[open] { box-shadow: var(--shadow-sm); }
+
+    summary {
+      padding: 1.1rem 1.25rem;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--navy);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .5rem;
+      user-select: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: '+';
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--sky);
+      min-width: 20px;
+      text-align: center;
+      transition: transform .2s ease;
+    }
+    details[open] summary::after {
+      content: '−';
+    }
+
+    .faq-answer {
+      padding: 0 1.25rem 1.1rem;
+      font-size: .95rem;
+      color: var(--gray-600);
+    }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    footer {
+      background: var(--navy);
+      padding: 2rem 1.25rem;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: .5rem;
+    }
+    .footer-logo span { color: var(--gold); }
+    footer p {
+      font-size: .8rem;
+      color: rgba(255,255,255,.4);
+    }
+
+    /* =============================================
+       FLOATING CTA (mobile sticky)
+    ============================================= */
+    .floating-cta {
+      position: fixed;
+      bottom: 1.25rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 200;
+      display: none;
+      width: calc(100% - 2.5rem);
+      max-width: 360px;
+    }
+    .floating-cta .btn {
+      width: 100%;
+      box-shadow: 0 8px 24px rgba(0,0,0,.25);
+    }
+    @media (max-width: 640px) {
+      .floating-cta { display: block; }
+    }
+
+    /* =============================================
+       ANIMATIONS
+    ============================================= */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .animate {
+      opacity: 0;
+      animation: fadeUp .6s ease forwards;
+    }
+    .delay-1 { animation-delay: .1s; }
+    .delay-2 { animation-delay: .22s; }
+    .delay-3 { animation-delay: .34s; }
+    .delay-4 { animation-delay: .46s; }
+
+    /* =============================================
+       SUCCESS STATE
+    ============================================= */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+    }
+    .form-success .check {
+      width: 72px; height: 72px;
+      background: #f0fdf4;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 1.25rem;
+    }
+    .form-success h3 { color: var(--navy); margin-bottom: .5rem; }
+    .form-success p { font-size: .95rem; }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======= TOP BAR ======= -->
+  <div class="topbar">
+    <strong>בדיקה ראשונית בחינם</strong> — ללא התחייבות, ללא תשלום מראש
+  </div>
+
+  <!-- ======= NAVBAR ======= -->
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-logo">ירושה<span>פלוס</span></div>
+      <a href="#form" class="btn btn-primary nav-cta">לבדיקה חינם ←</a>
+    </div>
+  </nav>
+
+  <!-- =============================================
+       SECTION 1: HERO
+       Goal: Grab attention. Speak directly to the pain.
+  ============================================= -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-badge animate">
+        <span class="dot"></span>
+        שירות דיסקרטי לאחר אובדן הורה
+      </div>
+
+      <h1 class="animate delay-1">
+        איבדת הורה?<br/>
+        ייתכן שיש <em>כספים שמחכים לך</em> — ואתה אפילו לא יודע עליהם
+      </h1>
+
+      <p class="hero-sub animate delay-2">
+        בדיקה פשוטה יכולה לחשוף כספים אבודים מביטוחים ופנסיות — שנצברו על שם הורך ולא הגיעו אליך.
+      </p>
+
+      <div class="hero-cta-group animate delay-3">
+        <a href="#form" class="btn btn-primary btn-lg">בדיקה ראשונית חינם ←</a>
+        <div class="hero-note">בלי תשלום מראש. בלי התחייבות</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       SECTION 2: TRUST STRIP
+       Goal: Immediately neutralize fear and doubt.
+  ============================================= -->
+  <section id="trust">
+    <div class="container">
+      <div class="trust-grid">
+
+        <div class="trust-item">
+          <div class="trust-icon">🔒</div>
+          <div class="trust-text">
+            <strong>דיסקרטיות מלאה</strong>
+            <span>המידע שלך נשמר בסודיות מוחלטת</span>
+          </div>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon">🤝</div>
+          <div class="trust-text">
+            <strong>ליווי אישי לאורך הדרך</strong>
+            <span>אתה לא לבד מול הבירוקרטיה</span>
+          </div>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon">✅</div>
+          <div class="trust-text">
+            <strong>תשלום רק על הצלחה</strong>
+            <span>לא נמצא כסף? לא שילמת כלום</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       SECTION 3: PROBLEM
+       Goal: Name the emotional pain clearly and truthfully.
+  ============================================= -->
+  <section id="problem">
+    <div class="container">
+      <div class="section-label">הבעיה</div>
+      <h2>כשמאבדים הורה, האחרון שחושבים עליו — זה הכסף.</h2>
+      <div class="divider"></div>
+      <p>
+        אבל מתישהו מגיע הרגע שבו מבינים: יש חשבונות שלא נסגרו, פוליסות ביטוח שמישהו שכח, פנסיות שאיש לא תבע אותן.
+        ואז מתחיל המרדף.
+      </p>
+
+      <div class="pain-cards">
+        <div class="pain-card">
+          <p>אני לא יודע אם יש כסף בכלל — ואם יש, מאיפה בכלל מתחילים?</p>
+        </div>
+        <div class="pain-card">
+          <p>כל חברת ביטוח מפנה אותי למחלקה אחרת. אין מי שיתן תשובה.</p>
+        </div>
+        <div class="pain-card">
+          <p>זה מרגיש כמו רדיפה אינסופית — ועדיין לא ברור אם יש שם בכלל משהו.</p>
+        </div>
+        <div class="pain-card">
+          <p>אני מפחד לפספס כסף שמגיע לי. אבל גם אין לי כוח לעוד ביורוקרטיה.</p>
+        </div>
+      </div>
+
+      <div class="problem-close">
+        זה לא חוסר יכולת — זה סיסטם שלא תוכנן לטובתך. יש פתרון.
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       SECTION 4: SOLUTION (3 STEPS)
+       Goal: Make it feel easy and clear.
+  ============================================= -->
+  <section id="solution">
+    <div class="container">
+      <div class="section-label">הפתרון</div>
+      <h2>אנחנו עושים את זה בשבילך — מקצה לקצה</h2>
+      <div class="divider"></div>
+      <p>
+        אני מאתר עבורך כספים אבודים, ביטוחים ופנסיות שלא ידעת עליהם — ומלווה אותך מול כל הגופים עד שהכסף אצלך.
+      </p>
+
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h3>בדיקה ואיתור כספים</h3>
+            <p>
+              בשיחה קצרה אוסף ממך פרטים בסיסיים, ומתחיל לבדוק מול כלל הגופים — חברות ביטוח, קרנות פנסיה, בנקים וגופים נוספים.
+              אתה לא צריך לעשות דבר בשלב הזה.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h3>טיפול מול הגופים</h3>
+            <p>
+              אני פונה לגופים הרלוונטיים, מגיש תביעות, עונה לבקשות, ומוודא שהתהליך מתקדם.
+              לא תצטרך לרדוף אחרי אף אחד.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h3>הכסף מגיע אליך</h3>
+            <p>
+              כשהתשלום מאושר ומגיע לחשבונך — רק אז משלמים על השירות.
+              בלי הפתעות, בלי עמלות נסתרות.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       SECTION 5: REALIZATION TRIGGER
+       Goal: The "aha moment" — shift from doubt to action.
+  ============================================= -->
+  <section id="trigger">
+    <div class="container trigger-inner">
+      <div class="quote-mark">"</div>
+      <blockquote>
+        רוב האנשים בכלל לא יודעים שיש כספים על שמם —
+        <em>עד שמישהו בודק עבורם.</em>
+      </blockquote>
+      <p>
+        ממוצע הכספים שנמצאו למשפחות שפנו אלינו עמד על עשרות אלפי שקלים.
+        חלקם לא ידעו בכלל שפוליסה כזו קיימת.
+      </p>
+      <a href="#form" class="btn btn-primary btn-lg">בדוק אם מגיע לך כסף ←</a>
+    </div>
+  </section>
+
+  <!-- =============================================
+       SECTION 6: PRICING
+       Goal: Build trust through transparent, fair pricing.
+  ============================================= -->
+  <section id="pricing">
+    <div class="container">
+      <div class="section-label">תמחור</div>
+      <h2>שקוף לחלוטין — ללא הפתעות</h2>
+      <div class="divider"></div>
+      <p>אנחנו מרוויחים רק כשאתה מקבל כסף. כך מתחיל שיתוף הפעולה שלנו:</p>
+
+      <div class="pricing-card">
+        <h3>דמי הצלחה בלבד</h3>
+        <div class="pricing-highlight">
+          <div class="pricing-num">2%</div>
+          <div class="pricing-detail">מהסכום שיתקבל</div>
+        </div>
+        <div class="pricing-or">— או —</div>
+        <div class="pricing-highlight">
+          <div class="pricing-num">₪1,000</div>
+          <div class="pricing-detail">הגבוה מביניהם</div>
+        </div>
+        <p style="font-size:.9rem; color: var(--gray-600); margin-top: .75rem;">
+          לדוגמה: נמצאו לך 80,000 ₪ — תשלום השירות יהיה 1,600 ₪.
+          נמצאו 30,000 ₪ — תשלום השירות יהיה 1,000 ₪.
+        </p>
+        <div class="pricing-zero">
+          לא נמצא כסף — לא משלמים דבר.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       SECTION 7: LEAD FORM
+       Goal: Capture the phone number. Low friction, high trust.
+  ============================================= -->
+  <section id="form">
+    <div class="container">
+      <div class="section-label" style="background:rgba(255,255,255,.12); color:rgba(255,255,255,.9);">בדיקה ראשונית</div>
+      <h2>השאר פרטים — נחזור אליך תוך שעות ספורות</h2>
+      <p class="form-sub">שיחת בדיקה קצרה, ללא עלות וללא התחייבות.</p>
+
+      <div class="lead-form">
+        <!-- FORM STATE -->
+        <div id="formContent">
+          <div class="field">
+            <label for="name">שם מלא</label>
+            <input type="text" id="name" name="name" placeholder="ישראל ישראלי" autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="phone">מספר טלפון</label>
+            <input type="tel" id="phone" name="phone" placeholder="05X-XXXXXXX" autocomplete="tel" inputmode="tel" />
+          </div>
+          <button class="btn btn-primary btn-lg form-submit" onclick="submitForm(event)">
+            בדוק אם מגיע לי כסף ←
+          </button>
+          <p class="form-privacy">🔒 הפרטים שלך נשמרים בסודיות מוחלטת ולא יועברו לשום גורם</p>
+        </div>
+
+        <!-- SUCCESS STATE -->
+        <div class="form-success" id="formSuccess">
+          <div class="check">✅</div>
+          <h3>קיבלנו! נחזור אליך בהקדם</h3>
+          <p>בדרך כלל תוך שעות ספורות — לרוב עוד באותו יום. נשמח לענות על כל שאלה.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       SECTION 8: FAQ
+       Goal: Address real objections before they stop the user.
+  ============================================= -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-label">שאלות נפוצות</div>
+      <h2>יש לך שאלות — טבעי לגמרי</h2>
+      <div class="divider"></div>
+
+      <div class="faq-list">
+
+        <details>
+          <summary>כמה זמן לוקח התהליך?</summary>
+          <div class="faq-answer">
+            שלב הבדיקה הראשוני נמשך בין שבועיים לחודש. גביית כספים בפועל יכולה לקחת 1–4 חודשים, תלוי בגוף הרלוונטי.
+            לאורך כל הדרך אני מעדכן אותך בהתקדמות.
+          </div>
+        </details>
+
+        <details>
+          <summary>האם זה חוקי לחלוטין?</summary>
+          <div class="faq-answer">
+            כן, לחלוטין. מדובר בתביעת כספים המגיעים לך מכוח החוק — מקרנות פנסיה, ביטוחי חיים, חסכונות וכספים אחרים שנצברו על שם הורך.
+            כל הפנייה לגופים נעשית עם ייפוי כוח חתום ובהתאם לנהלים המקובלים.
+          </div>
+        </details>
+
+        <details>
+          <summary>למה לא לעשות את זה לבד?</summary>
+          <div class="faq-answer">
+            אפשר. אבל הניסיון מראה שרוב האנשים נתקעים מוקדם — כי אין מי שיאמר להם בדיוק לאיפה לפנות, מה לבקש, ואיך לעקוב.
+            חברות הביטוח לא ממהרות לפרסם שיש אצלן כסף שלך. אנחנו יודעים איפה לחפש ואיך לשאול.
+          </div>
+        </details>
+
+        <details>
+          <summary>האם אני מתחייב למשהו בשיחה הראשונה?</summary>
+          <div class="faq-answer">
+            ממש לא. שיחת הבדיקה הראשונה היא ללא כל התחייבות.
+            אם תחליט להמשיך — נחתום על הסכם ברור וכתוב. אם לא — לא תשלם כלום ולא תחויב בשום דבר.
+          </div>
+        </details>
+
+        <details>
+          <summary>מה אם לא ימצאו כסף?</summary>
+          <div class="faq-answer">
+            לא ישלמו כלום. הסיכון הוא שלי, לא שלך.
+            אם לא נמצא שום כסף — השיחה הייתה חינם, ולא תחויב בשקל.
+          </div>
+        </details>
+
+      </div>
+
+      <div style="margin-top: 2.5rem; text-align: center;">
+        <a href="#form" class="btn btn-primary btn-lg">לבדיקה ראשונית חינם ←</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= FOOTER ======= -->
+  <footer>
+    <div class="footer-logo">ירושה<span>פלוס</span></div>
+    <p>איתור כספים אבודים — ליווי אישי, תשלום על הצלחה</p>
+    <p style="margin-top:.5rem;">© 2025 · כל הזכויות שמורות</p>
+  </footer>
+
+  <!-- ======= FLOATING CTA (mobile) ======= -->
+  <div class="floating-cta" id="floatingCta">
+    <a href="#form" class="btn btn-primary">לבדיקה חינם ←</a>
+  </div>
+
+  <!-- =============================================
+       JAVASCRIPT: Form submit + hide floating CTA near form
+  ============================================= -->
+  <script>
+    // Form submission handler
+    function submitForm(e) {
+      e.preventDefault();
+      const name  = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+
+      if (!name) {
+        document.getElementById('name').focus();
+        document.getElementById('name').style.borderColor = '#ef4444';
+        return;
+      }
+      if (!phone || phone.length < 9) {
+        document.getElementById('phone').focus();
+        document.getElementById('phone').style.borderColor = '#ef4444';
+        return;
+      }
+
+      // In production, replace this with a real API call / form submission
+      // e.g., fetch('/api/leads', { method: 'POST', body: JSON.stringify({ name, phone }) })
+
+      document.getElementById('formContent').style.display = 'none';
+      document.getElementById('formSuccess').style.display  = 'block';
+
+      // Track conversion (placeholder for Google Analytics / Meta Pixel)
+      if (typeof gtag !== 'undefined') gtag('event', 'lead_form_submit');
+    }
+
+    // Reset border color on input
+    ['name','phone'].forEach(id => {
+      document.getElementById(id).addEventListener('input', function() {
+        this.style.borderColor = '';
+      });
+    });
+
+    // Hide floating CTA when form is in view
+    const formSection = document.getElementById('form');
+    const floatingCta = document.getElementById('floatingCta');
+    const observer = new IntersectionObserver(entries => {
+      floatingCta.style.opacity = entries[0].isIntersecting ? '0' : '1';
+      floatingCta.style.pointerEvents = entries[0].isIntersecting ? 'none' : 'auto';
+    }, { threshold: 0.1 });
+    observer.observe(formSection);
+
+    // Smooth appear for floating CTA after scroll
+    floatingCta.style.transition = 'opacity .3s ease';
+    floatingCta.style.opacity = '0';
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) floatingCta.style.opacity = '1';
+    }, { passive: true });
+  </script>
+</body>
+</html>
