@@ -920,38 +920,47 @@
        SECTION 7: LEAD FORM
        Goal: Capture the phone number. Low friction, high trust.
   ============================================= -->
-  <section id="form">
-    <div class="container">
-      <div class="section-label" style="background:rgba(255,255,255,.12); color:rgba(255,255,255,.9);">בדיקה ראשונית</div>
-      <h2>השאר פרטים — נחזור אליך תוך שעות ספורות</h2>
-      <p class="form-sub">שיחת בדיקה קצרה, ללא עלות וללא התחייבות.</p>
+<section id="form">
+  <div class="container">
+    <div class="section-label" style="background:rgba(255,255,255,.12); color:rgba(255,255,255,.9);">בדיקה ראשונית</div>
+    <h2>השאר פרטים — נחזור אליך תוך שעות ספורות</h2>
+    <p class="form-sub">שיחת בדיקה קצרה, ללא עלות וללא התחייבות.</p>
 
-      <div class="lead-form">
-        <!-- FORM STATE -->
-        <div id="formContent">
-          <div class="field">
-            <label for="name">שם מלא</label>
-            <input type="text" id="name" name="name" placeholder="ישראל ישראלי" autocomplete="name" />
-          </div>
-          <div class="field">
-            <label for="phone">מספר טלפון</label>
-            <input type="tel" id="phone" name="phone" placeholder="05X-XXXXXXX" autocomplete="tel" inputmode="tel" />
-          </div>
-          <button class="btn btn-primary btn-lg form-submit" onclick="submitForm(event)">
-            בדוק אם מגיע לי כסף ←
-          </button>
-          <p class="form-privacy">🔒 הפרטים שלך נשמרים בסודיות מוחלטת ולא יועברו לשום גורם</p>
+    <div class="lead-form">
+
+      <!-- FORM -->
+      <form id="formContent" action="https://formspree.io/f/mrejzpyp" method="POST">
+
+        <input type="hidden" name="_subject" value="ליד חדש - ירושה פלוס" />
+        <input type="hidden" name="_captcha" value="false" />
+
+        <div class="field">
+          <label for="name">שם מלא</label>
+          <input type="text" id="name" name="name" placeholder="ישראל ישראלי" required />
         </div>
 
-        <!-- SUCCESS STATE -->
-        <div class="form-success" id="formSuccess">
-          <div class="check">✅</div>
-          <h3>קיבלנו! נחזור אליך בהקדם</h3>
-          <p>בדרך כלל תוך שעות ספורות — לרוב עוד באותו יום. נשמח לענות על כל שאלה.</p>
+        <div class="field">
+          <label for="phone">מספר טלפון</label>
+          <input type="tel" id="phone" name="phone" placeholder="05X-XXXXXXX" required />
         </div>
+
+        <button type="submit" class="btn btn-primary btn-lg form-submit" id="submitBtn">
+          בדוק אם מגיע לי כסף ←
+        </button>
+
+        <p class="form-privacy">🔒 הפרטים שלך נשמרים בסודיות מוחלטת ולא יועברו לשום גורם</p>
+      </form>
+
+      <!-- SUCCESS -->
+      <div class="form-success" id="formSuccess">
+        <div class="check">✅</div>
+        <h3>קיבלנו! נחזור אליך בהקדם</h3>
+        <p>בדרך כלל תוך שעות ספורות — לרוב עוד באותו יום.</p>
       </div>
+
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- =============================================
        SECTION 8: FAQ
@@ -1028,56 +1037,79 @@
   <!-- =============================================
        JAVASCRIPT: Form submit + hide floating CTA near form
   ============================================= -->
-  <script>
-    // Form submission handler
-    function submitForm(e) {
-      e.preventDefault();
-      const name  = document.getElementById('name').value.trim();
-      const phone = document.getElementById('phone').value.trim();
+<script>
+  const form = document.getElementById('formContent');
+  const success = document.getElementById('formSuccess');
+  const btn = document.getElementById('submitBtn');
 
-      if (!name) {
-        document.getElementById('name').focus();
-        document.getElementById('name').style.borderColor = '#ef4444';
-        return;
-      }
-      if (!phone || phone.length < 9) {
-        document.getElementById('phone').focus();
-        document.getElementById('phone').style.borderColor = '#ef4444';
-        return;
-      }
+  // TRACK CLICK (לפני שליחה)
+  btn.addEventListener('click', () => {
+    console.log('CTA Clicked');
 
-      // In production, replace this with a real API call / form submission
-      // e.g., fetch('/api/leads', { method: 'POST', body: JSON.stringify({ name, phone }) })
-
-      document.getElementById('formContent').style.display = 'none';
-      document.getElementById('formSuccess').style.display  = 'block';
-
-      // Track conversion (placeholder for Google Analytics / Meta Pixel)
-      if (typeof gtag !== 'undefined') gtag('event', 'lead_form_submit');
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'cta_click');
     }
+  });
 
-    // Reset border color on input
-    ['name','phone'].forEach(id => {
-      document.getElementById(id).addEventListener('input', function() {
-        this.style.borderColor = '';
+  // HANDLE SUBMIT (בלי רענון)
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+
+    if (!name || !phone || phone.length < 9) return;
+
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
       });
+
+      if (res.ok) {
+        form.style.display = 'none';
+        success.style.display = 'block';
+
+        console.log('Lead Submitted');
+
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'lead_submit');
+        }
+
+      } else {
+        alert('שגיאה בשליחה, נסה שוב');
+      }
+
+    } catch (err) {
+      alert('שגיאת רשת');
+    }
+  });
+
+  // UI FIX
+  ['name','phone'].forEach(id => {
+    document.getElementById(id).addEventListener('input', function() {
+      this.style.borderColor = '';
     });
+  });
 
-    // Hide floating CTA when form is in view
-    const formSection = document.getElementById('form');
-    const floatingCta = document.getElementById('floatingCta');
-    const observer = new IntersectionObserver(entries => {
-      floatingCta.style.opacity = entries[0].isIntersecting ? '0' : '1';
-      floatingCta.style.pointerEvents = entries[0].isIntersecting ? 'none' : 'auto';
-    }, { threshold: 0.1 });
-    observer.observe(formSection);
+  // Floating CTA logic (נשאר כמו שלך)
+  const formSection = document.getElementById('form');
+  const floatingCta = document.getElementById('floatingCta');
 
-    // Smooth appear for floating CTA after scroll
-    floatingCta.style.transition = 'opacity .3s ease';
-    floatingCta.style.opacity = '0';
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) floatingCta.style.opacity = '1';
-    }, { passive: true });
-  </script>
-</body>
-</html>
+  const observer = new IntersectionObserver(entries => {
+    floatingCta.style.opacity = entries[0].isIntersecting ? '0' : '1';
+    floatingCta.style.pointerEvents = entries[0].isIntersecting ? 'none' : 'auto';
+  }, { threshold: 0.1 });
+
+  observer.observe(formSection);
+
+  floatingCta.style.transition = 'opacity .3s ease';
+  floatingCta.style.opacity = '0';
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) floatingCta.style.opacity = '1';
+  }, { passive: true });
+</script>
