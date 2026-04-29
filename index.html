@@ -1057,8 +1057,10 @@
 
     const name = document.getElementById('name').value.trim();
     const phone = document.getElementById('phone').value.trim();
-
-    if (!name || !phone || phone.length < 9) return;
+    
+    if (!name || !phone || phone.length < 9) {
+  alert('מלא פרטים כנדרש');
+  return;
 
     const data = new FormData(form);
 
